@@ -1,0 +1,23 @@
+[package]
+name = "jgui"
+version = "0.4.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+ject-native = { path = "ject-native" }
+serde_json = "1.0"
+brockmann = { path = "vendor/brockmann", default-features = false }
+
+[workspace]
+
+# Keep native development builds small; GPU dependencies are otherwise sizable.
+[profile.dev]
+debug = 0
+incremental = false
+
+[profile.test]
+debug = 0
+incremental = false
